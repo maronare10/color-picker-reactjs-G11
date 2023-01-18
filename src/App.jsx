@@ -1,25 +1,27 @@
-import { useState } from "react"
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import {ColorPicker} from "./pages/ColorPicker"
+import Layout from "./Layout"
+import Login from "./pages/Login"
+import Profile from "./pages/Profile"
+
 
 const App = () => {
-  const [backgroundColor, setBackgroundColor] = useState('')
-   
-  const handleChange = (event) => {
-    // console.log(event.target.value)
-    setBackgroundColor(event.target.value)
-
-  }
-
   return (
-    <div className="app" style= {{backgroundColor}}>
-      <span>Selecciona un color:</span>
-      <input
-        // type="color"
-        type='text'
-        placeholder="#FF0000"
-        onChange={handleChange}
-      />
-    </div>
+    <>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<ColorPicker />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+
+
+
+
+    </>
   )
 }
 
